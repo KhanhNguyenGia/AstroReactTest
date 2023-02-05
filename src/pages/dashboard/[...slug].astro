@@ -1,0 +1,16 @@
+---
+import Test from '../../components/Test.component';
+
+export function getStaticPaths() {
+	return [
+		{ params: { slug: undefined } },
+		{ params: { slug: 'about' } },
+		{ params: { slug: 'contact' } },
+	];
+}
+---
+
+<div>
+	<h1>Dashboard</h1>
+	<Test client:only='react' />
+</div>
