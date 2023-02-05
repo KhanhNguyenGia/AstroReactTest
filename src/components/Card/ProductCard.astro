@@ -1,0 +1,17 @@
+---
+import type { Product } from '../../pages/products/[productId].astro';
+import CardWrapper from './CardWrapper.astro';
+
+export type Props = Product;
+
+const { id, title, category, description, image, price } = Astro.props;
+---
+
+<CardWrapper>
+	<img class='rounded-lg' src={image} alt={title} />
+	<a href={`/products/${id}`}><h2 class='text-xl mt-2 mb-1 font-bold'>{title}</h2></a>
+	<p class='text-sm text-gray-400'>{category}</p>
+	<p class='line-clamp-4 my-3'>{description}</p>
+	<p class='text-lg font-bold' slot='price'>${price}</p>
+	<button class='bg-green-400 px-3 py-2 rounded-lg font-bold text-sm' slot='action'>Add</button>
+</CardWrapper>

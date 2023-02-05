@@ -1,0 +1,35 @@
+---
+import ProductCard from '../../components/Card/ProductCard.astro';
+import Layout from '../../layouts/Layout.astro';
+import type { Product } from './[productId].astro';
+
+// const result = await fetch('https://fakestoreapi.com/products');
+// const data: Product[] = await result.json();
+const products: Product[] = Array.from(Array(20)).map((product, i) => ({
+	id: i + 1,
+	title: `Product ${i + 1}`,
+	price: 100,
+	description:
+		'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta eaque hic rem temporibus tempore atque in inventore itaque consectetur, enim labore illo ipsum quia, cumque architecto nostrum praesentium, nam suscipit.',
+	category: 'Product Category',
+	image: `https://picsum.photos/seed/${i + 1}/300/200`,
+}));
+---
+
+<Layout title='Product Page'>
+	<h1>Product Page</h1>
+	<div class='flex flex-wrap'>
+		{
+			products.map((product) => (
+				<ProductCard
+					id={product.id}
+					title={product.title}
+					price={product.price}
+					description={product.description}
+					category={product.category}
+					image={product.image}
+				/>
+			))
+		}
+	</div>
+</Layout>
