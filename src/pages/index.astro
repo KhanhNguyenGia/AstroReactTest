@@ -1,10 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import ShowCounter from '../components/Show.component';
 ---
 
 <Layout title='Welcome to Astro.'>
 	<main>
+		<ShowCounter client:only='react' />
 		<h1>Welcome to <span class='text-gradient'>Astro</span></h1>
 		<a href='/products'>Products</a>
 		<a href='/dashboard'>Dashboard</a>
